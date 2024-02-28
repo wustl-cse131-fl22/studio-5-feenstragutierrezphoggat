@@ -1,5 +1,7 @@
 package studio5;
 
+import static org.junit.Assert.assertEquals;
+
 import edu.princeton.cs.introcs.StdDraw;
 
 public class Methods {
@@ -16,6 +18,17 @@ public class Methods {
 	public static double distanceBetween(double x1, double y1, double x2, double y2) {
 		double distance = 0;
 		// FIXME: Hint use Math methods (e.g. Math.sqrt) to compute the distance
+		
+		distance = Math.sqrt((x2 - x1)*(x2-x1) + (y2 - y1)*(y2 - y1));
+			
+			
+		
+		
+		
+		//assertEquals(1.0, Methods.distanceBetween(1.0, 0.0, 2.0, 0.0), 1e-5);
+		
+		
+		
 		
 		return distance;
 	}
@@ -34,16 +47,22 @@ public class Methods {
 		// TODO: Draw the remaining rings of the bull's eye
 		// Blue ring with 3.0/4.0 the radius
 		// suggested rgb values: 0, 109, 219
+		StdDraw.setPenColor(0,109,219);
+		StdDraw.filledCircle(x, y, radius*(3.0/4.0));
 
 		
 
 		// Red ring with 1.0/2.0 the radius
 		// suggested rgb values: 146, 0, 0
 
-		
+		StdDraw.setPenColor(146, 0, 0);
+		StdDraw.filledCircle(x, y, radius*(1.0/2.0));
+
 
 		// Yellow ring with 1.0/4.0 the radius
 		// suggested rgb values: 255, 255, 109
+		StdDraw.setPenColor(255, 255, 109);
+		StdDraw.filledCircle(x, y, radius*(1.0/4.0));
 
 		
 	}
@@ -61,8 +80,19 @@ public class Methods {
 	 */
 	public static String substituteAll(String source, char target, String replacement) {
 		String result = "";
-		// TODO: Finish this method
 		
+		char [] rose = source.toCharArray();
+		for (int i = 0; i < rose.length; i++) {
+			
+			if(rose[i] == target) {
+				result += replacement;
+			}
+			else {
+				result += rose[i];
+			}
+			
+		}
+
 		return result;
 	}
 
@@ -74,7 +104,10 @@ public class Methods {
 	 */
 	public static int arraySum(int[] values) {
 		int sum = 0;
-		// FIXME: Compute the sum of the values in an array
+		for(int i = 0; i < values.length; i++) {
+			sum += values[i];
+		}
+
 		
 		return sum;
 	}
@@ -89,14 +122,33 @@ public class Methods {
 	public static int[] filledArray(int length, int value) {
 		int[] values = null; // FIXME: Create an array of the appropriate size
 		// TODO: Finish this method
+		values = new int [length];
+		for(int i = 0; i < length; i++) {
+			values[i] = value;
+		}
 
-		
 
 		return values;
 	}
 
+	
 	// TODO: Create an arrayMean method which accepts an int array of values parameter.
-	// TODO: Create a JavaDoc comment for the arrayMean method.
+	
 
+	
+	// TODO: Create a JavaDoc comment for the arrayMean method.
+	/**
+	 * @param filled array with values 
+	 * @return average value of given array
+	 */
+	
+	public static double arrayMean(int[] array) {
+		double ans = 0;
+		for (int i = 0; i < array.length; i++) {
+			ans += array[i];
+		}
+		ans = ans/array.length;
+		return ans;
+	}
 	
 }
